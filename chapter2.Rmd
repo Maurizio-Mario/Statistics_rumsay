@@ -110,7 +110,7 @@ barplot(table(e8), main = "Animals possessed by 100 adults", xlab = "Animal", yl
 
 A road intersection is observed for four hours, observing if the drivers stop completely, roll through, ran the stop sign. 
 
-``` {r 9}
+``` {r 5.1}
 e5 <- data.frame(rep(c("Complete stop", "Rolled through", "Ran the stop sign"), c(64.2, 35.2, 0.6)))
 par("mar")
 par(mar=c(1,1,1,1))
@@ -133,3 +133,26 @@ Heavily. We cannot derive any information, since this plot could refer to almost
 __D. Should you make a generalization of all drivers based on this data?__
 
 Not at all. Because of the reason stated in point B. we cannot even think any kind of inference.
+
+### Excercise 6 - 27/2/16
+
+A survey is conducted to determine whether 20 office employees of a certain company would prefer to work at home, if given the chance. Of the 10 women surveyed, 7 said yes, and three no. Of the 10 men, 8 said no, 2 said yes. Compare the result using two pie charts. Does gender seems to affect one's preferences to work at home?
+
+```{r 6.1}
+rm(e6)
+e6 <- data.frame(gender = rep( c("man", "woman"), each=10))
+e6$answer <- ifelse(e6$gender == "man", rep( c("yes", "no"), c(8, 2)), rep( c("yes", "no"), c(3, 7)))
+```
+
+``` {r 6.2}
+par(mfrow = c(1, 2))
+
+suppressWarnings(pie(table(e6$answer[e6$gender == "man"]), main = "Men", line = -4, labels = paste(c("Yes ", "No "), round(prop.table(table(e6$answer[e6$gender == "man"]))*100, 1), "%", sep = "")))
+
+suppressWarnings(pie(table(e6$answer[e6$gender == "woman"]), main = "Women", line = -4, labels = paste(c("Yes ", "No "), round(prop.table(table(e6$answer[e6$gender == "woman"]))*100, 1), "%", sep = "")))
+
+suppressWarnings(mtext("Willingness to work at home", side = 3, line = -2, outer = TRUE, cex=2,font=2))
+```
+
+
+Gender appears to be a relevant variable relatively to the willingness to work at home.
