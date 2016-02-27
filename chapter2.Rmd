@@ -139,7 +139,6 @@ Not at all. Because of the reason stated in point B. we cannot even think any ki
 A survey is conducted to determine whether 20 office employees of a certain company would prefer to work at home, if given the chance. Of the 10 women surveyed, 7 said yes, and three no. Of the 10 men, 8 said no, 2 said yes. Compare the result using two pie charts. Does gender seems to affect one's preferences to work at home?
 
 ```{r 6.1}
-rm(e6)
 e6 <- data.frame(gender = rep( c("man", "woman"), each=10))
 e6$answer <- ifelse(e6$gender == "man", rep( c("yes", "no"), c(8, 2)), rep( c("yes", "no"), c(3, 7)))
 ```
@@ -154,5 +153,65 @@ suppressWarnings(pie(table(e6$answer[e6$gender == "woman"]), main = "Women", lin
 suppressWarnings(mtext("Willingness to work at home", side = 3, line = -2, outer = TRUE, cex=2,font=2))
 ```
 
-
 Gender appears to be a relevant variable relatively to the willingness to work at home.
+
+### Excercise 7 - 27/2/16
+
+Give an example of categorical data that you cannot summarize correctly by using a pie chart.
+
+__Solution:__
+Where the percentages does not sum up to 100. An observation or an individual could be part of more than one group. 
+
+### Excercise 8 - 27/2/16
+
+Surfing non-work-related websites compromises employee productivity. 
+
+```{r 8.1 }
+e8 <- data.frame(employer = rep( c("no", "yes"), c(334, 666)))
+e8$employee <- rep( c("no", "yes"), c(498, 502))
+```
+
+```{r 8.2}
+par(mfrow = c(1, 2))
+
+suppressWarnings(pie(table(e8$employer), main = "Employers", line = -4, labels = paste(c("Yes ", "No "), round(prop.table(table(e8$employer))*100, 1), "%", sep = "")))
+
+suppressWarnings(pie(table(e8$employee), main = "Employees", line = -4, labels = paste(c("Yes ", "No "), round(prop.table(table(e8$employee))*100, 1), "%", sep = "")))
+
+suppressWarnings(mtext("Productivity and non-work-related web pages", side = 3, line = -2, outer = TRUE, cex=2,font=2))
+```
+
+__A. Interpret these results__
+
+Employers are more convinced that non-work-related web sites do compromise the productivity.
+
+__B. What important information is missing from pie chart?__
+
+The dimension of the sample. (I created the data artificially with 1000 observation.)
+
+### Excercise 9 - 27/2/16
+
+Here is the frequency bar graph of 500 people between three categories (1: favor, 2: oppose, 3: neutral) about the possibility of smoking.
+
+```{r 9.2}
+e8 <- data.frame(opinion = rep(c("Favor", "Oppose", "Neutral"), c(250, 125, 125)))
+barplot(table(e8), main = "Opinion on smoking ban")
+```
+
+__A. Make a relative frequency table of this data.__
+
+```{r 9.3}
+paste(prop.table(table(e8))*100, "%", sep = "")
+```
+
+__B. Use the relative frequency table to make a bar graph of this data.__
+
+```{r 9.4}
+barplot(prop.table(table(e8)), main = "Opinion on smoking ban (percentage")
+```
+
+__C. Interpret the result.__
+
+The half of the sample favors the smoking ban. The same amount of of people oppose the ban and does not care about it.
+
+### Excercise 10 - 27/2/16
