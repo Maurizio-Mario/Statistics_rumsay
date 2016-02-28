@@ -215,3 +215,33 @@ __C. Interpret the result.__
 The half of the sample favors the smoking ban. The same amount of of people oppose the ban and does not care about it.
 
 ### Excercise 10 - 27/2/16
+
+A health club asks their customers to rate their service (very good, 1; good, 2; fair, 3; poor, 4). What percentages od the of the customers rated the services as good?
+
+```{r 10.1}
+e10 <- data.frame(rate = rep(c("very good", "good", "fair", "poor"), c(10, 10, 8, 2)))
+barplot(table(e10), main = "Club customer ratings")
+paste(round(prop.table(table(e10)), 2)*100, "%", sep = "")
+
+```
+
+### Excercise 11 - 28/2/16
+
+Do voters agree about the "Opinion X"? yes: 500; no: 550; dk: 250. 
+
+```{r 11.1}
+e11 <- data.frame(opinion = rep(c("yes", "no", "dk"), c(500, 550, 250)))
+a1 <- barplot(table(e11), main = "Opinion on Isue X")
+text(y= table(e11) + 1, x= a1, labels=as.character(table(e11)), xpd=TRUE)
+```
+
+__A. Make the frequency table of these results (including the total number).__
+
+```{r 11.2}
+paste(round(prop.table(table(e11)), 2)*100, "%", sep = "")
+table(e11)
+```
+
+__B. Evaluate the graph as to whether or not it fairly represents the results.__
+
+No, the original graph from the book clearly does tot represent the correct proportion between the categories.
