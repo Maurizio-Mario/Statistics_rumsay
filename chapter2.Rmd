@@ -245,3 +245,40 @@ table(e11)
 __B. Evaluate the graph as to whether or not it fairly represents the results.__
 
 No, the original graph from the book clearly does tot represent the correct proportion between the categories.
+
+### Excercise 12 - 28/2/16
+
+What are the priority of 270 seniors, including whether or not buying a home.
+
+```{r 12.1}
+e12 <- data.frame(answer = rep(c("yes", "no", "dk"), c(100, 90, 80)))
+p12.1 <- barplot(table(e12), axes = F, ylim = c(0, 300), main = "Is buying house a priority?")
+axis(2, c(0, 50, 100, 150, 200, 250, 300))
+```
+
+__A. The original bargraph is misleading: explain why.__
+
+The bar graph does not have a scale capable of make the differences between categories frequencies.
+
+__B. Make the new bar graph that more fairly presents the results.__
+
+```{r 12.2}
+p12.2 <- barplot(table(e12), ylim = c(0, 100), main = "Is buying house a priority?")
+```
+
+### Excercise 13 - 28/2/16
+
+Are the customers males or females?
+
+```{r 13.1}
+e13 <- data.frame(gender = rep(c("male", "female"), c(330, 670)))
+barplot(prop.table(table(e13))*100, ylim = c(0, 100), main = "Gender of customers")
+```
+
+__A. Interpret this result.__
+
+The customers are roughly 67% females.
+
+__B. Is the bar plot a fari and accurate representation of the data?__
+
+Yes, it is ok since it represent the proportions between the two categories, even if a pie chart could be more adequate.
