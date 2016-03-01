@@ -1,9 +1,10 @@
 ---
-title: 'Rumsey, Chapter 2: Organizing categorial data - charts and graphs. [Ongoing]'
+title: 'Rumsey, Chapter 2: Organizing categorial data - charts and graphs. [Complete - Base graphics]'
 author: "Maurizio Murino"
 date: "5 February 2016"
 output: html_document
 ---
+
 ### Exercise 1 - 5/2/'16
 
 Suppose 375 individuals are asked what type of vehicle they own: SUV, truck, ora car. See the following frequency table.
@@ -174,11 +175,11 @@ e8$employee <- rep( c("no", "yes"), c(498, 502))
 ```{r 8.2}
 par(mfrow = c(1, 2))
 
-suppressWarnings(pie(table(e8$employer), main = "Employers", line = -4, labels = paste(c("Yes ", "No "), round(prop.table(table(e8$employer))*100, 1), "%", sep = "")))
+suppressWarnings(pie(table(e8$employer), main = "Employers", line = -2, labels = paste(c("Yes ", "No "), round(prop.table(table(e8$employer))*100, 1), "%", sep = "")))
 
-suppressWarnings(pie(table(e8$employee), main = "Employees", line = -4, labels = paste(c("Yes ", "No "), round(prop.table(table(e8$employee))*100, 1), "%", sep = "")))
+suppressWarnings(pie(table(e8$employee), main = "Employees", line = -2, labels = paste(c("Yes ", "No "), round(prop.table(table(e8$employee))*100, 1), "%", sep = "")))
 
-suppressWarnings(mtext("Productivity and non-work-related web pages", side = 3, line = -2, outer = TRUE, cex=2,font=2))
+suppressWarnings(mtext("Productivity and non-work web", side = 3, line = -2, outer = TRUE, cex = 1.5, font = 2))
 ```
 
 __A. Interpret these results__
@@ -282,3 +283,34 @@ The customers are roughly 67% females.
 __B. Is the bar plot a fari and accurate representation of the data?__
 
 Yes, it is ok since it represent the proportions between the two categories, even if a pie chart could be more adequate.
+
+### Excercise 14 - 28/2/16
+
+Sample of 20 employees. Do they prefer work from home?
+
+```{r 14.1}
+e14 <- data.frame(gender = rep(c("man", "woman"), each = 10))
+e14$answer <- ifelse(e14$gender == "man", rep(c("yes", "no"), c(2, 8)), rep(c("yes", "no"), c(7, 3)))
+
+par(mfrow = c(1, 2))
+
+barplot(table(e14$answer), main = "Would you work at home?", ylim = c(0, 12))
+
+par(mar = c(5.1, 4.1, 4.1, 2))
+par(xpd = TRUE)
+
+barplot(table(e14$answer, e14$gender), main = "by sex", col = gray.colors(length(unique(e14$answer))), ylim = c(0, 12))
+
+legend(1, 12, c("yes", "no"), cex = 0.4, fill = gray.colors(length(unique(e14$answer))))
+
+mtext("Productivity and non-work-related web", side = 3, line = -1.5, outer = TRUE, cex = 1.5, font = 2)
+```
+
+__A. Interpret the result of each graph.__
+
+Graph 1: 11 of 20 workers do not think that it would be a probem in terms of productivity. 
+Graph 2: 8 men out of 10 do not think that it would be a probem in terms of productivity, against 3 women out of 10.  
+
+__B. Discuss the added value in including gender in the second bra graph.__
+
+It permits us a better understanding of the resut in graph 1. That is, a common filter policy could be differently satisfactory between men and women.
