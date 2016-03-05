@@ -1,0 +1,55 @@
+---
+title: 'Rumsay, Chapter 5: Undestanding probability basis'
+author: "Maurizio Murino"
+date: "4 March 2016"
+output: html_document
+---
+```{r setoption, cache=TRUE, warning=FALSE, message=FALSE, fig.width=12}
+knitr::opts_chunk$set(cache=TRUE, warning=FALSE, message=FALSE, fig.width=12)
+```
+
+### Exercise 1 - 4/3/'16
+
+Balls colors: "brown" 13%, "yellow" 14%, "red" 13%, "blue" 24%, "orange" 20%, "green" 16%.
+
+```{r 3.1 dataload}
+# There is no sample dimension. I make a n = 100 dataframe.
+
+e3 <- data.frame(color = rep(c("brown", "yellow", "red", "blue", "orange", "green"), c(13, 14, 13, 24, 20, 16)))
+barchart(~table(color), data = e3,
+         xlab = "Percentage",
+         main = "Balls (no N)")
+```
+
+__A. What is the chance that you extract a brown or yellow ball?__
+
+It is the sum of the quantities of yellow and brown balls on the total, that is:
+
+```{r 3.2 prob}
+paste((13 + 14), "%", sep = "")
+```
+
+__B. What is the chance that you will not pull out a blue?__
+
+Blue balls represent the 24% of the pool. Hence, the probability of not extracting it is:
+
+```{r 3.3 prob}
+paste((100 - 24), "%", sep = "")
+```
+
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r}
+summary(cars)
+```
+
+You can also embed plots, for example:
+
+```{r, echo=FALSE}
+plot(cars)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
