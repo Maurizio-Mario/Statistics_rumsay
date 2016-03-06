@@ -55,3 +55,29 @@ histogram(~e3,
           main = "Distribution of 73 Tvs between 45 owners",
           breaks = seq(from = 0, to = 4, by = 1))
 ```
+
+### Exercise 4 - 6/3/'16
+
+Think a loaded die. Make it roll several times. 
+
+```{r 4.1 dataload}
+e4 <- data.frame(n = rep(c(1, 2, 3, 4, 5, 6), c(10, 15, 5, 15, 5, 20)))
+histogram(~n, data = e4,
+          type = "count",
+          main = "260 die rolls",
+          xlab = "Die result",
+          breaks = seq(from = 0, to = 6, by = 1))
+```
+
+__A. Make the relative frequency histogram of these results.__
+
+```{r 4.2 plot1}
+histogram(~n, data = e4,
+          main = "Relative requencies - 260 die rolls",
+          xlab = "Die result",
+          breaks = seq(from = 0, to = 6, by = 1))
+```
+
+__B. You can make a relative frequency histogram from a frequency histogram; can you go to the other direction?__
+
+Well, it is possible, but only by arbitrarily determining a sample size, that is unknow. Hence, it is no really useful.
