@@ -81,3 +81,17 @@ histogram(~n, data = e4,
 __B. You can make a relative frequency histogram from a frequency histogram; can you go to the other direction?__
 
 Well, it is possible, but only by arbitrarily determining a sample size, that is unknow. Hence, it is no really useful.
+
+### Exercise 5 - 6/3/'16
+
+An ATM machine asks to choose an amount in 50$ increments from 100 from $500. Results from a recent sample of customer withdrawals are shown in the figures. Discuss shape, center and spread of the data. 
+
+```{r 5.1 dataload}
+e5 <- data.frame(withdraw = rep(c(100, 150, 200, 250, 300, 350, 400, 450, 500), c(14, 23, 23, 4, 2, 0, 2, 0, 2)))
+barchart(e5,
+          main = "Withdrawals",
+          type = "count",
+          horizontal = FALSE,
+          xlab = "Withdrawals",
+          breaks = seq(from = 100, to = 500, by = 50))
+```
