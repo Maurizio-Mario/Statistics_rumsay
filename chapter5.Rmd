@@ -44,3 +44,38 @@ Flip a coin four times and have four head. Does this outcome give you the idea t
 __Solution:__
 
 We do not have enough data to answer this question. Four coin tosses produce `2^4 = 16` possible results. Four heads represents a single possible result, hence the probability of getting it is `1/16 = .06`. It is not likely, but it is possible. 
+
+### Exercise 3 - 6/3/'16
+
+Toss a fair coin 10 times, and record how many heads occur.
+
+__A. How many are the possible outcomes?__
+
+```{r 3.1}
+2 ^ 10 
+```
+
+__B. What would be the probability of each of the outcomes?__
+
+```{r 3.2}
+paste(round((1 / 1024), 3), "%", sep = "") 
+```
+
+__c. How many of the outcomes would have one head? What is the probability of one head on ten flips.__
+
+A possible solution id HTTTTTTTTTT, but I could have a head at any toss, such as the second THTTTTTTTT and so forth. Hence, we can count 10 possible outcomes:
+
+```{r 3.3}
+paste(round((10 / 1024), 2), "%", sep = "") 
+```
+
+__D. How many of the outomes would have zero heads? What is the probability of zero heads in ten filps?__
+
+Only one possible result has no heads.
+
+```{r 3.4}
+paste(round((1/1024), 3), "%", sep = "")
+```
+
+__E. What is the probability of getting one head or less on 10 flips?__
+
