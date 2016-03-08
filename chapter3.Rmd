@@ -11,6 +11,7 @@ knitr::opts_chunk$set(cache=TRUE, warning=FALSE, message=FALSE, fig.width=12)
 
 ```{r, loadlattice}
 library(lattice)
+library(knitr)
 library(xtable)
 ```
 
@@ -95,3 +96,23 @@ barchart(e5,
           xlab = "Withdrawals",
           breaks = seq(from = 100, to = 500, by = 50))
 ```
+
+### Exercise 6 - 8/3/'16
+
+Histogram of rods produced by a company. a Rod should be 100 inches long. Discuss the company accuracy by interpreting the shape, center and spread of the data. 
+
+```{r 6.1 dataload and plot}
+e6 <- data.frame(lngth = rep(seq(from = 99.2, to = 100.6, by = 0.1), c(1, 0, 2, 1, 2, 2, 8, 7, 10, 10, 6, 7, 2, 1, 4)))
+
+histogram(~lngth, data = e6,
+          breaks = seq(from = 99.2, to = 100.6, by = 0.1),
+          type = "count",
+          main = "Rods length",
+          xlab = "Rods")
+```
+
+```{r 6.2 data summary xtable, results="asis"}
+kable(summary(e6), format = "markdown", align = "c", row.names = TRUE)
+```
+
+The distribution is slightly skewed to the left, even if it this quite close to the center. Even so, the 50% of the production is between 99.85 and 100.2, being really accurate.  
