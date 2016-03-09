@@ -79,3 +79,8 @@ paste(round((1/1024), 3), "%", sep = "")
 
 __E. What is the probability of getting one head or less on 10 flips?__
 
+There are eleven possible results, hence:
+
+```{r 3.5}
+paste(round((11/1024), 2), "%", "")
+```
