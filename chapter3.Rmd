@@ -116,3 +116,42 @@ kable(summary(e6), format = "markdown", align = "c", row.names = TRUE)
 ```
 
 The distribution is slightly skewed to the left, even if it this quite close to the center. Even so, the 50% of the production is between 99.85 and 100.2, being really accurate.  
+
+### Exercise 7 - 11/3/'16
+
+In the histogram the amount of money spent on fruits by 317 households in a year. Describe shape, center and spread. What do they tell us about how much families spend on fruits?
+
+```{r 7.1}
+e7 <- data.frame(expense = rep(seq(100, 800, 50), c(2, 0, 5, 9, 12, 27, 60, 65, 70, 50, 32, 18, 7, 2, 3)))
+
+histogram(~expense, data = e7,
+          type = "count",
+          breaks = seq(50, 800, 50),
+          main = "Histogram of fruits",
+          xlab = "Fruits",
+          ylab = "Frequency")
+
+kable(summary(e7), format = "markdown", align = "c", row.names = TRUE)
+```
+
+The histogram is symmetric and bell shaped, with peak arounf 500. Range is from 100 to 800, quite large, with due probably to vary dietary habits, availability and prices of vegatables. Most of the house hold spend between 200 and 700 per year.
+
+### Exercise 8 - 11/3/'16
+
+Consider the percentage return for a group of stocks in Portfolio A over a year period, as shown in figure. 
+
+```{r 8 dataload plot}
+e8 <- data.frame(percen = rep(seq(-40, 70, 10), c(2, 13, 4, 3, 15, 18, 10, 12, 10, 3, 3, 3)))
+histogram(~percen, data = e8,
+          breaks = seq(-50, 70, 10),
+          xlab = "Percent returnon stocks in group A",
+          ylab = "Percentage of stocks")
+```
+
+__A. Some of the value on the X-axis are negative numbers. What does this mean?__
+
+The stock had losses in few moments of the year.
+
+__B. On any histogram in general, when (if ever) can the X-and/or Y-axis contain negative values?__
+
+While the X-axis can report if a negative value occurred, the Y-axis report how many times (absolute or percentage) a value appears in a distribution. Hence, it cannot be negative.

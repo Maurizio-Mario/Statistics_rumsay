@@ -1,0 +1,7 @@
+name: Publish Document
+account: rpubs
+server: rpubs.com
+bundleId:
+        https://api.rpubs.com/api/v1/document/159691/dcf2574365b144288328647d6cc76a3b
+url: http://rpubs.com/Maurizio-Mario/159691
+when: 1457551631.17416

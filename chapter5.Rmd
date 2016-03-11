@@ -7,6 +7,10 @@ output: html_document
 ```{r setoption, cache=TRUE, warning=FALSE, message=FALSE, fig.width=12}
 knitr::opts_chunk$set(cache=TRUE, warning=FALSE, message=FALSE, fig.width=12)
 ```
+```{r, loadlattice}
+library(lattice)
+library(knitr)
+```
 
 ### Exercise 1 - 4/3/'16
 
@@ -18,6 +22,7 @@ Balls colors: "brown" 13%, "yellow" 14%, "red" 13%, "blue" 24%, "orange" 20%, "g
 e3 <- data.frame(color = rep(c("brown", "yellow", "red", "blue", "orange", "green"), c(13, 14, 13, 24, 20, 16)))
 barchart(~table(color), data = e3,
          xlab = "Percentage",
+         horizontal = FALSE,
          main = "Balls (no N)")
 ```
 
@@ -84,3 +89,122 @@ There are eleven possible results, hence:
 ```{r 3.5}
 paste(round((11/1024), 2), "%", "")
 ```
+
+### Exercise 4 - 9/3/'16
+
+What is the probability of getting more than one head on 10 flips of a fair coin?
+
+```{r 4.1}
+paste(round(1 - (11/1024), 3), "%", sep = "")
+```
+
+### Exercise 5 - 9/3/'16
+
+Suppose a basket player'2 free-throw shooting percentage is 70%.
+
+__A. Explain what it means as a probability.__
+
+It means that on the long term the player should perform the 70% of correct throws, as average.
+
+__B. What is wrong with thinking that his chances of making his next free throw are 50-50.__
+
+Because the 70% is produced by a long time observation of his performances. Probability does not tell us what is gung to happening, but just how, in the long term, it should result.
+
+### Exercise 6 - 6/3/'16
+
+Suppose you buy a lottery ticket, and you have to pick six numbers from 1 to 50 (repetions allowed). Which repetition is more likely to win: 13, 48, 17, 22, 6, 39 or 1, 2, 3, 4, 5, 6?
+
+__Solution:__
+
+They are equally likely, since every number picked does not depend from the other numbers already extracted. 
+
+### Exercise 7 - 6/3/'16
+
+You feel lucky again and buy a handful of instant lottery tickets. The last three tickes give you one dollar! Should you play again because you are "on a roll"?
+
+__Solution:__ 
+
+No, of course. Those are "winning-traps", giving you the illusion that a real victory is really possible. Such a small trend tells us nothing about the possible resul of the next ticket. Simply, there are more ticket where you do not win: in the end, you will always lose. 
+
+### Exercise 8 - 9/3/'16
+
+Suppose that a small town has five people with a rare form of cancer. Does this automatically mean that a huge problem exists that need to be addresses?
+
+__Solution:__
+
+Since the illness is rare, we could suspect a problem in that particular area, even if not necessarily. More information about the time of the appearence of the illness could be useful to produce a more useful deduction.
+
+### Exercise 9 - 9/3/'16
+
+A couple has conceived three girls so far a fourth baby on the way. Do you predict that the newborn could be a girl or a boy? Why?
+
+__Solution:__
+
+The chance is 50-50, since there is no relation between the sex f the newborn and the sex of his/her sisters.
+
+### Exercise 10 - 9/3/'16
+
+Meteorologists use computer models to predict when and where hurrican will hit shore. Suppose they predict that hurrican Stat has 20% chance of hitting the east coast.
+
+__A. On what info are the meteorologist basing this prediction?__
+
+Simulators are based on the historical data collected from previous events. 
+
+__B. Why is this prediction harder to make than your chance of getting a head on your next coin toss?__
+
+Coin flips are equally likely, 50-50. Past hurricanes hit the east cost in average the 20% of cases. It is not harder, it is only based on different data, especially in simulators, where many data input are blank due to lack of information.
+
+### Exercise 11 - 9/3/'16
+
+Bob stayed at the slot four hours. He think the longer he will stay, the better chance he has to win eventually. Is Bob right?
+
+__Solution:__
+
+Unfortunately, he is wrong. The longer he stays, the bigger becomes the amount of money he wastes. He can win, even if with a really tiny chance, but the prize will never cover the losses. The winner will always be the owner of the machine. We can try to simulate a long game session even with a reasonable winning probability (0.01%). Win give the player 100, lose will cost 1. Even so, the game ends with the player leaving with empty pockets.
+
+``` {r 11.1}
+
+set.seed(123)
+
+
+n <- 1e6
+a <- rep(NA_integer_, n)
+a[1] <- 100L # set initial value (integer)
+i <- 1 # counter
+while(a[i] > 0) {
+  # first check whether our results will fit. If not, embiggenate `a`.
+  if(i==length(a)) a <- c(a, rep(NA_integer_, n))
+  if (rbinom(1, 1, 0.01) == 1) {
+    a[i+1] <- a[i] + 100L
+  } else {
+    a[i+1] <- a[i] - 1L
+  }
+  i <- i + 1  
+}
+
+plot(a[seq_len(i)], type = "l")
+```
+
+### Exercise 12 - 9/3/'16
+
+Which situation is more likely to produce exactly 50 percent heads: flipping a coin 10 times or 10000?
+
+__Solution:__
+
+Probability works on the long run, hence the correct answer is 10000. Let's try a simulation of the problem.
+
+```{r 12.1 one series of flips}
+set.seed(1234)
+ten_fl <- sample(0:1, 10, replace = TRUE)
+thous_fl <- (sample(0:1, 10000, replace = TRUE))
+
+par(mfrow = c(1, 2))
+
+plot_ten_fl <- hist(ten_fl, main = "Ten coin flips", xlab = paste("Mean", mean(ten_fl), sep = " "))
+abline(v = mean(ten_fl), col = "red")
+
+plot_thous_fl <- hist(thous_fl, main = "10000 coin flips", xlab = paste("Mean", mean(thous_fl), sep = " "))
+abline(v = mean(thous_fl), col = "red")
+```
+
+As we can see, the mean tends more toward the center of the distribution (0.5) on 10000 flips.
