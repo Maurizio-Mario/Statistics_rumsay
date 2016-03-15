@@ -1,0 +1,90 @@
+---
+title: 'Rumsay, Chapter 6: Measures of relative standing and the normal distribution.
+  [Ongoing]'
+author: "Maurizio Murino"
+date: "12 March 2016"
+output: html_document
+---
+
+```{r setoption, cache=TRUE, warning=FALSE, message=FALSE, fig.width=12}
+knitr::opts_chunk$set(cache=TRUE, warning=FALSE, message=FALSE, fig.width=12)
+```
+
+```{r, loadlattice}
+library(lattice)
+```
+
+### Exercise 1 - 12/3/'16
+
+What do you guess are the standard deviations of the two distributions in the figure below?
+
+```{r 1.1 dataload1, echo=FALSE}
+
+set.seed(123)
+e1a <- seq(10, 70,length = 10000)
+e1b <- dnorm(e1a, mean = 40, sd = 8)
+```
+
+```{r plot 1}
+plote1 <- xyplot(e1b ~ e1a,
+       type = "l",
+       horizontal = FALSE,
+       scales = list(y = list(at = NULL)),
+       main = "Normal distribution, mean: 40, ds: 8, range: 10-70",
+       panel = function(x, ...) {
+               panel.xyplot(x, ...)
+               vlines <- c(32, 40, 48)
+               panel.abline( v = vlines, lty = 3)
+       })
+```     
+
+```{r dataload 2, echo=FALSE}
+set.seed(123)
+e1c <- seq(10, 70,length = 10000)
+e1d <- dnorm(e1c, mean = 40, sd = 4)
+```
+
+```{r plot2}
+plote2 <- xyplot(e1d ~ e1c,
+       type = "l",
+       horizontal = FALSE,
+       scales = list(y = list(at = NULL)),
+       main = "Normal distribution, mean: 40, ds: 4, range: 10-70",
+       panel = function(x, ...) {
+               panel.xyplot(x, ...)
+               vlines <- c(36, 40, 44)
+               panel.abline( v = vlines, lty = 3)
+       })
+
+## position: (a, b, c, d) b: height from the top; d: height from the bottom
+
+print(plote1, position=c(0, .5, 1, 1), more=TRUE)
+print(plote2, position=c(0, 0, 1, .5))
+```
+
+__Solution:__ 
+
+In the second plot, the standard deviation is slighly smaller than the first's.
+
+### Exercise 2 - 15/3/'16
+
+Draw a picture of a normal distribution with mean 70 and standard deviation 5.
+
+```{r2.1  data load, echo=FALSE}
+
+e2a <- seq(0, 140, length = 10000)
+e2b <- dnorm(e2a, 70, 15)                  
+```
+
+```{r2.2 plot}
+xyplot(e2b ~ e2a,
+       type = "l",
+       main = "Normal distribution, mean 70",
+       scales = list(y = list(at = NULL), x = list(at = seq(0, 140, 10))),
+       panel = function(x, ...){
+               panel.xyplot(x, ...)
+               vmean <- 70
+               panel.abline(v = vmean, lty = 4)
+               
+       })
+```
