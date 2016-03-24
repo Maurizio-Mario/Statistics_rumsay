@@ -1,0 +1,18 @@
+{
+    "contents" : "---\ntitle: 'Rumsay, Chapter 6: Measures of relative standing and the normal distribution.\n  [Ongoing]'\nauthor: \"Maurizio Murino\"\ndate: \"12 March 2016\"\noutput: html_document\n---\n\n```{r setoption, cache=TRUE, warning=FALSE, message=FALSE, fig.width=12}\nknitr::opts_chunk$set(cache=TRUE, warning=FALSE, message=FALSE, fig.width=12)\n```\n\n```{r, loadlattice}\nlibrary(lattice)\n```\n\n### Exercise 1 - 12/3/'16\n\nWhat do you guess are the standard deviations of the two distributions in the figure below?\n\n```{r 1.1 dataload1, echo=FALSE}\n\nset.seed(123)\ne1a <- seq(10, 70,length = 10000)\ne1b <- dnorm(e1a, mean = 40, sd = 8)\n```\n\n```{r plot 1}\nplote1 <- xyplot(e1b ~ e1a,\n       type = \"l\",\n       horizontal = FALSE,\n       scales = list(y = list(at = NULL)),\n       main = \"Normal distribution, mean: 40, ds: 8, range: 10-70\",\n       panel = function(x, ...) {\n               panel.xyplot(x, ...)\n               vlines <- c(32, 40, 48)\n               panel.abline( v = vlines, lty = 3)\n       })\n```     \n\n```{r dataload 2, echo=FALSE}\nset.seed(123)\ne1c <- seq(10, 70,length = 10000)\ne1d <- dnorm(e1c, mean = 40, sd = 4)\n```\n\n```{r plot2}\nplote2 <- xyplot(e1d ~ e1c,\n       type = \"l\",\n       horizontal = FALSE,\n       scales = list(y = list(at = NULL)),\n       main = \"Normal distribution, mean: 40, ds: 4, range: 10-70\",\n       panel = function(x, ...) {\n               panel.xyplot(x, ...)\n               vlines <- c(36, 40, 44)\n               panel.abline( v = vlines, lty = 3)\n       })\n\n## position: (a, b, c, d) b: height from the top; d: height from the bottom\n\nprint(plote1, position=c(0, .5, 1, 1), more=TRUE)\nprint(plote2, position=c(0, 0, 1, .5))\n```\n\n__Solution:__ \n\nIn the second plot, the standard deviation is slighly smaller than the first's.\n\n### Exercise 2 - 15/3/'16\n\nDraw a picture of a normal distribution with mean 70 and standard deviation 5.\n\n```{r2.1  data load, echo=FALSE}\n\ne2a <- seq(0, 140, length = 10000)\ne2b <- dnorm(e2a, 70, 15)                  \n```\n\n```{r2.2 plot}\nxyplot(e2b ~ e2a,\n       type = \"l\",\n       main = \"Normal distribution, mean 70\",\n       scales = list(y = list(at = NULL), x = list(at = seq(0, 140, 10))),\n       panel = function(x, ...){\n               panel.xyplot(x, ...)\n               vmean <- 70\n               panel.abline(v = vmean, lty = 4)\n               \n       })\n```\n\n### Exercise 3 - 24/3/'16\n\nDraw a picture with two normal distributions. Give each a mean of 70, with standard deviations of 5 and 10. How do the distributions differ?\n\n```{R 3.1 plots}\ne3a <- seq(40, 100, length = 1000)\ne3b <- dnorm(e3a, 70, 5)\nplot_e3a <- xyplot(e3b ~ e3a,\n                   type = \"l\",\n                   main = \"Plot 1 - Mean 70, sd 5\")\n\ne3c <- seq(40, 100, length = 1000)\ne3d <- dnorm(e3a, 70, 10)\nplot_e3b <- xyplot(e3d ~ e3c,\n                   type = \"l\",\n                   main = \"Plot 2 - Mean 70, sd 10\",\n                   ylim = range(e3b))\n                   \n\nprint(plot_e3a, position = c(0, .5, 1, 1), more = TRUE)\nprint(plot_e3b, position = c(0, 0, 1, 0.5))\n```\n\n_Solution:_ \n\nThe second distribution is more widely scattered around the mean.",
+    "created" : 1458837666008.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1406249950",
+    "id" : "21C27ECF",
+    "lastKnownWriteTime" : 1458841316,
+    "path" : "C:/Users/MaurizioLocale/OneDrive/Data_Science/Statistics_rumsay/chapter6.Rmd",
+    "project_path" : "chapter6.Rmd",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "type" : "r_markdown"
+}

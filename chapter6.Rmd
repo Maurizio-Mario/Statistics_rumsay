@@ -88,3 +88,30 @@ xyplot(e2b ~ e2a,
                
        })
 ```
+
+### Exercise 3 - 24/3/'16
+
+Draw a picture with two normal distributions. Give each a mean of 70, with standard deviations of 5 and 10. How do the distributions differ?
+
+```{R 3.1 plots}
+e3a <- seq(40, 100, length = 1000)
+e3b <- dnorm(e3a, 70, 5)
+plot_e3a <- xyplot(e3b ~ e3a,
+                   type = "l",
+                   main = "Plot 1 - Mean 70, sd 5")
+
+e3c <- seq(40, 100, length = 1000)
+e3d <- dnorm(e3a, 70, 10)
+plot_e3b <- xyplot(e3d ~ e3c,
+                   type = "l",
+                   main = "Plot 2 - Mean 70, sd 10",
+                   ylim = range(e3b))
+                   
+
+print(plot_e3a, position = c(0, .5, 1, 1), more = TRUE)
+print(plot_e3b, position = c(0, 0, 1, 0.5))
+```
+
+_Solution:_ 
+
+The second distribution is more widely scattered around the mean.
