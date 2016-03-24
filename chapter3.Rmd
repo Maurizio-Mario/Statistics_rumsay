@@ -262,3 +262,35 @@ print(plot_e11c, position=c(0, 0, 1, .5))
 __Solution:__ 
 
 We are considering `r nrow(e11)` rolls with a mean of `r round(mean(e11$freq), 2)` and a standard deviation of `r round(sd(e11$freq), 2)`. In the long course, the mean for dice rolls is 3.5, and the standard deviation 1.71. Hence, the results do not suggest a loaded die, since the frequency of the results shows a similar probabily for every possible result.
+
+### Exercise 12 - 24/3/'16
+
+The first month's telephone bills is shown in figure. Explain why the histohram is misleading and suggest a solution.
+
+```{r 12.1 dataload and hist1}
+set.seed(1234)
+x <- abs(rep(rnorm(13, seq(5, 125, 10), 5), c(24, 43, 25, 18, 14, 12, 10, 12, 14, 18, 16, 14, 10)))
+
+hist_e12a <- histogram(x,
+          type = "count",
+          main = "Plot 1",
+          breaks = 13,
+          xlab = "Telephone bill (€)",
+          ylim = 0:140)
+```
+
+_Solution:_ 
+
+The scale y is too large. It does not allow a clear comparison between the different surprise each customer found in its bill. Reducing the scale to from 150 to 50, as shown in plot 2, make the data easier to read.
+
+```{r 12.2 hist2}
+hist_e12b <- histogram(x,
+          type = "count",
+          main = "Plot 2",
+          breaks = 13,
+          xlab = "Telephone bill (€)",
+          ylim = 0:50)
+
+print(hist_e12a, position=c(0, .5, 1, 1), more=TRUE)
+print(hist_e12b, position=c(0, 0, 1, .5))
+```
