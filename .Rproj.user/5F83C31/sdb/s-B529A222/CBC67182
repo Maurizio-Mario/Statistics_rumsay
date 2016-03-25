@@ -1,0 +1,18 @@
+{
+    "contents" : "plot_e4c <- xyplot(e4b ~ e4a,\n       type = \"l\",\n       main = \"Plot 3\",\n       scales = list(x = list(at = seq(60, 170, 5)), rot = 45),\n       panel = function(x,y, ...){\n               panel.xyplot(x,y, ...)\n               panel.abline( v = c(80, 95, 110), lty = 2)\n               \n               xx <- c(85, x[x>=80 & x<=95], 95) \n               yy <- c(0,   y[x>=80 & x<=95], 0) \n               panel.polygon(xx,yy, ..., col='red')\n       })\n\nprint(plot_e4b)\ndev.off()\n",
+    "created" : 1458942567096.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "2022436481",
+    "id" : "CBC67182",
+    "lastKnownWriteTime" : 1458923110,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

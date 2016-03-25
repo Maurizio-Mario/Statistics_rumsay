@@ -12,6 +12,7 @@ knitr::opts_chunk$set(cache=TRUE, warning=FALSE, message=FALSE, fig.width=12)
 
 ```{r, loadlattice}
 library(lattice)
+library(knitr)
 ```
 
 ### Exercise 1 - 12/3/'16
@@ -114,4 +115,81 @@ print(plot_e3b, position = c(0, 0, 1, 0.5))
 
 _Solution:_ 
 
-The second distribution is more widely scattered around the mean.
+The second distribution is more widely scattered around the mean that, hence, result a little smaller.
+
+### Exercise 4 - 25/3/'16
+
+Have a normal distribution with mean 110 and standard deviation 15. 
+
+```{r 4.1}
+e4a <- seq(60, 170, length = 10000)
+e4b <- dnorm(e4a, 110, 15)
+
+plot_e4a <- xyplot(e4b ~ e4a,
+       type = "l",
+       main = "Plot 1",
+       scales = list(x = list(at = seq(60, 170, 10)), rot = 45),
+       panel = function(x, ...){
+               panel.xyplot(x, ...)
+               panel.abline(v = 110, lty = 2)
+       })
+
+plot_e4b <- xyplot(e4b ~ e4a,
+       type = "l",
+       main = "Plot 2",
+       scales = list(x = list(at = seq(60, 170, 10)), rot = 45),
+       panel = function(x,y, ...){
+               panel.xyplot(x,y, ...)
+               panel.abline( v = c(110, 125), lty = 2)
+               
+               xx <- c(110, x[x>=110 & x<=125], 125) 
+               yy <- c(0,   y[x>=110 & x<=125], 0) 
+               panel.polygon(xx,yy, ..., col='red')
+       })
+
+plot_e4c <- xyplot(e4b ~ e4a,
+       type = "l",
+       main = "Plot 3",
+       scales = list(x = list(at = seq(60, 170, 10)), rot = 45),
+       panel = function(x,y, ...){
+               panel.xyplot(x,y, ...)
+               panel.abline( v = c(95, 110, 140), lty = 2)
+               
+               xx <- c(95, x[x>=95 & x<=140], 140) 
+               yy <- c(0,   y[x>=95 & x<=140], 0) 
+               panel.polygon(xx,yy, ..., col='red')
+       })
+
+plot_e4d <- xyplot(e4b ~ e4a,
+       type = "l",
+       main = "Plot 4",
+       scales = list(x = list(at = seq(60, 170, 10)), rot = 45),
+       panel = function(x,y, ...){
+               panel.xyplot(x,y, ...)
+               panel.abline( v = c(80, 95, 110), lty = 2)
+               
+               xx <- c(85, x[x>=80 & x<=95], 95) 
+               yy <- c(0,   y[x>=80 & x<=95], 0) 
+               panel.polygon(xx,yy, ..., col='red')
+       })
+
+print(plot_e4a, split = c(1, 1, 2, 2), more = TRUE)
+print(plot_e4b, split = c(2, 1, 2, 2), more = TRUE)
+print(plot_e4c, split = c(1, 2, 2, 2), more = TRUE)
+print(plot_e4d, split = c(2, 2, 2, 2), more = FALSE)
+
+```
+
+__A. About what percentage of the values lie between 110 and 125?__
+
+Between 110 and 125 we have approximately the 34% of the observations.
+
+__B. About what percentage of the values lie between 95 and 140?__
+
+Between 95 and 140 there are approximately the 81% of the observations.
+
+__C. About what percentage of the values lie between 80 and 95?__ 
+
+Between 80 and 95 we should expect about the 12% of the observations.
+
+### Exercise 5 - 25/3/'16
