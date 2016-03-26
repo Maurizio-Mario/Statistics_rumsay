@@ -1,12 +1,11 @@
 ---
-title: 'Rumsay, Chapter 3: Organizing quantitative data - Charts and graphs. [Ongoing
-  - Lattice graphics]'
+title: 'Rumsay, Chapter 3: Organizing quantitative data - Charts and graphs with Lattice'
 author: "Maurizio Murino"
 date: "3 March 2016"
 output: html_document
 ---
-```{r setoption, cache=TRUE, warning=FALSE, message=FALSE, fig.width=12}
-knitr::opts_chunk$set(cache=TRUE, warning=FALSE, message=FALSE, fig.width=12)
+```{r setoption, cache=TRUE, warning=FALSE, message=FALSE, fig.width=14}
+knitr::opts_chunk$set(cache=TRUE, warning=FALSE, message=FALSE, fig.width=14)
 ```
 
 ```{r, loadlattice}
@@ -295,7 +294,7 @@ print(hist_e12a, position=c(0, .5, 1, 1), more=TRUE)
 print(hist_e12b, position=c(0, 0, 1, .5))
 ```
 
-### Exercise 13 - 2/3/'16
+### Exercise 13 - 26/3/'16
 
 Check out the sales of a particular car across the US over a 60 days period, as shown in the figure. 
 NB. the problem is solved with random generated data.
@@ -307,8 +306,8 @@ e13 <- data.frame(sales = rnorm(60, 650, 50), day = 1:60)
 xyplot(sales ~ day, data = e13,
        type = c("l", "p", "r"),
        abline = list(mean(e13$sales), col = "red", lty = 2))
+min(e13$sales); max(e13$sales); which.min(e13$sales); which.max(e13$sales)
 ```
-
 
 __A. Can you see a pattern to the sales of this car across this time period?__
 
@@ -316,8 +315,68 @@ In order to answer this question, I am going to add a trendline. The line indica
 
 __B. What are the lowest and highest numbers af sales and when did they occur?__
 
-The minimum number of sales was `r min(e13$sales)`, and the maximum `r max(e13$sales`. They occurred on the `r paste(which.min(e13$sales), "th", sep ="")` and `r paste(which.max(e13$sales), "%", sep ="")` days.
+The minimum number of sales was 532,71, and the maximum 770,8. They occurred on the 4th and 20th days.
 
 __C. Can you estimate the average off all sales over this time period?__
 
 The average is `r mean(e13$sales)`, as indicated by the red line that I added to the grap.
+
+### Exercise 14 - 26/3/'16
+
+Bob decides is a good time to get in shape, so he starts exercising every day and plans to increase his excercise as he goes along. Look at the two graphs.
+
+```{r 14.1}
+set.seed(1234)
+e14 <- data.frame(mins = rnorm(100, mean = seq(20, 30, length = 100), sd = 4), day = c(1:100))
+
+plot_e14a <- xyplot(mins ~ day, data = e14,
+       type = c("l", "p"),
+       main = "Line graph 1 of exercise log",
+       ylab = "Exercise time",
+       xlab = "Day")
+
+plot_e14b <- xyplot(mins ~ day, data = e14,
+       type = c("l", "p"),
+       main = "Line graph 2 of exercise log",
+       ylab = "Exercise time",
+       xlab = "Day",
+       ylim = 10:80)
+
+print(plot_e14a, position=c(0, .5, 1, 1), more=TRUE)
+print(plot_e14b, position=c(0, 0, 1, .5))
+```
+
+__A. Compare the two graphs. Do they represent the same dataset?__
+
+Yes, they do. The scales of the two graphs are different.
+
+__B. If the graphs are from the same data, which one is the most adequate?__
+
+Graph 1 is most adequate. It permits to better graps the variance of the exercises. The second graph has a lot of space that does not communicate any useful information.
+
+### Exercise 15 - 26/3/'16
+
+Here is the line graph with the revenues of a company over the years. Exaplain why the graph is misleading and how you could fix the problem.
+
+```{r 15.1}
+e15 <- data.frame(rev = seq(10, 70, by = 10), year = as.character(c(1950, 1970, 1975, 1980, 1985, 1990, 2000)))
+
+class(e15$year)
+
+xyplot(rev ~ year, data = e15,
+       type = c("p", "l"),
+       main = "Line graph of revenue")
+```
+
+__Solution:__
+
+First, the graph probably does not consider economic inflation.
+Second, the time scale consider each interval as equally spaced. The X scale should be spaced properly, with data represented by the adequate time intervals.
+
+### Exercise 16 - 26/3/'16
+
+Line graphs typically connect the dots that represent the data values over time. If the time increments between the dots are large, explain why the line graph can be somewhat misleading.
+
+__Solution:__
+
+If the time increments between the dots are large, and you connect the dots, you assume that the change between happened with a steady rate. 
