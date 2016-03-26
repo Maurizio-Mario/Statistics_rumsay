@@ -3,6 +3,5 @@ account: rpubs
 server: rpubs.com
 bundleId:
         https://api.rpubs.com/api/v1/document/161244/7b2da9dbb3bb4093bb342a97cfdbac99
-url:
-        http://rpubs.com/publish/claim/161244/9939b64a7377417685f441a0b6acd187
-when: 1458063541.89445
+url: http://rpubs.com/Maurizio-Mario/161244
+when: 1458945785.61088

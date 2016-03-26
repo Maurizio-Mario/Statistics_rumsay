@@ -294,3 +294,30 @@ hist_e12b <- histogram(x,
 print(hist_e12a, position=c(0, .5, 1, 1), more=TRUE)
 print(hist_e12b, position=c(0, 0, 1, .5))
 ```
+
+### Exercise 13 - 2/3/'16
+
+Check out the sales of a particular car across the US over a 60 days period, as shown in the figure. 
+NB. the problem is solved with random generated data.
+
+```{r 13.1 dataload}
+set.seed(1234)
+e13 <- data.frame(sales = rnorm(60, 650, 50), day = 1:60)
+
+xyplot(sales ~ day, data = e13,
+       type = c("l", "p", "r"),
+       abline = list(mean(e13$sales), col = "red", lty = 2))
+```
+
+
+__A. Can you see a pattern to the sales of this car across this time period?__
+
+In order to answer this question, I am going to add a trendline. The line indicate a negative trend along the 60 days of sales.
+
+__B. What are the lowest and highest numbers af sales and when did they occur?__
+
+The minimum number of sales was `r min(e13$sales)`, and the maximum `r max(e13$sales`. They occurred on the `r paste(which.min(e13$sales), "th", sep ="")` and `r paste(which.max(e13$sales), "%", sep ="")` days.
+
+__C. Can you estimate the average off all sales over this time period?__
+
+The average is `r mean(e13$sales)`, as indicated by the red line that I added to the grap.
