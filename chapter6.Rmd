@@ -192,4 +192,51 @@ __C. About what percentage of the values lie between 80 and 95?__
 
 Between 80 and 95 we should expect about the 12% of the observations.
 
-### Exercise 5 - 25/3/'16
+### Exercise 5 - 30/3/'16
+
+Exam scores have a normal distribution with mean of 70 and standard deviation of 10. Bob's score is 80. Find and intepret his standard score. 
+
+```{r 5.1}
+e5a <- seq(30, 110, length = 1000)
+e5b <- dnorm(e5a, 70, 10)
+
+e5c <- seq(-3, 3, length = 1000)
+e5d <- dnorm(e5c, mean = 0, sd = 1)
+
+# Bob's Z-score:
+(80 - 70)/10
+```
+
+__Solution:__ 
+
+Bob's Z-score is 1, that is, exactly one standard deviation from the mean.
+
+```{r 5.2 plots}
+
+plot_e5a <- xyplot(e5b ~ e5a, 
+                  type = "l",
+                  main = "Bob's score",
+                  panel = function(x, ...){
+                          panel.xyplot(x, ...)
+                          panel.abline(v = c(70, 80), lty = c(1, 2))
+                          panel.text(lab = c("Mean", "Bob"), x = c(70, 80), y = 0.035, 
+                adj = c(0.4, 0), cex = 1.5, srt = 45)
+                  })
+
+
+plot_e5b <- xyplot(e5d ~ e5c, 
+                  type = "l",
+                  main = "Bob's standardized score",
+                  panel = function(x, ...){
+                          panel.xyplot(x, ...)
+                          panel.abline(v = c(0, 1), lty = c(1, 2))
+                          panel.text(lab = c("Mean", "Bob"), x = c(0, 1), y = 0.35, 
+                adj = c(0.4, 0), cex = 1.5, srt = 45)
+                  })
+
+print(plot_e5a, split = c(1, 1, 1, 2), more = TRUE)
+print(plot_e5b, split = c(1, 2, 1, 2), more = FALSE)
+dev.off()
+```
+
+### Exercise 5 - 30/3/'16

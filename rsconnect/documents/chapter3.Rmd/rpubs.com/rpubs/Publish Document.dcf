@@ -2,6 +2,7 @@ name: Publish Document
 account: rpubs
 server: rpubs.com
 bundleId:
-        https://api.rpubs.com/api/v1/document/164750/1b9c9f7857e7446ead7808135035c73c
-url: http://rpubs.com/Maurizio-Mario/164750
-when: 1459025232.67455
+        https://api.rpubs.com/api/v1/document/165366/7832a89e08984d368b8c11a441eb716e
+url:
+        http://rpubs.com/publish/claim/165366/d1eb22069bdd41999fecd69691f94001
+when: 1459030627.0129
