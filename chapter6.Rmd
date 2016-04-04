@@ -239,4 +239,43 @@ print(plot_e5b, split = c(1, 2, 1, 2), more = FALSE)
 dev.off()
 ```
 
-### Exercise 5 - 30/3/'16
+### Exercise 6 - 4/4/'16
+
+Bob scores 80 on both his math exam (which has a mean of 70 and standard deviation on 10) and his English exam (which has a mean of 85 and a standard deviation of 5). Fin and interpret Bob's z-scores on both exams to let him know wich exam (if either) he did better on.
+
+```{r 6.1 dataload}
+e6a <- seq(0, 100, length = 1000)
+e6b <- dnorm(e6a, mean = 70, sd = 10)
+
+e6c <- seq(0, 100, length = 1000)
+e6d <- dnorm(e6c, mean = 85, sd = 5)
+```
+
+```{r 6.2 plots}
+plot_e6a <- xyplot(e6b ~ e6a,
+                   type = "l",
+                   main = "Math exam",
+                   ylim = range(range(e6d)),
+                   panel = function(x, ...){
+                           panel.xyplot(x, ...)
+                           panel.abline(v = c(70, 80), lty = c(2, 3))
+                           panel.text(lab = c("Mean", "Bob"), x = c(70, 80), y = 0.03, 
+                adj = c(0.4, 0), cex = 1.5, srt = 90)
+                           })
+print(plot_e6a)
+
+plot_e6b <- xyplot(e6d ~ e6c,
+                   type = "l",
+                   main = "English exam",
+                   panel = function(x, ...){
+                           panel.xyplot(x, ...)
+                           panel.abline(v = c(85, 80), lty = c(2, 3))
+                           panel.text(lab = c("Mean", "Bob"), x = c(85, 80), y = 0.03, 
+                adj = c(0.4, 0), cex = 1.5, srt = 90)
+                           })
+print(plot_e6a, split = c(1, 1, 1, 2), more = TRUE)
+print(plot_e6b, split = c(1, 2, 1, 2), more = FALSE)
+
+
+
+```
