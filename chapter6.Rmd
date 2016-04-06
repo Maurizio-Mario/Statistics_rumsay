@@ -219,7 +219,7 @@ plot_e5a <- xyplot(e5b ~ e5a,
                   panel = function(x, ...){
                           panel.xyplot(x, ...)
                           panel.abline(v = c(70, 80), lty = c(1, 2))
-                          panel.text(lab = c("Mean", "Bob"), x = c(70, 80), y = 0.035, 
+                          panel.text(lab = c("Mean", "Bob"), x = c(70, 80), y = 0.02, 
                 adj = c(0.4, 0), cex = 1.5, srt = 45)
                   })
 
@@ -230,7 +230,7 @@ plot_e5b <- xyplot(e5d ~ e5c,
                   panel = function(x, ...){
                           panel.xyplot(x, ...)
                           panel.abline(v = c(0, 1), lty = c(1, 2))
-                          panel.text(lab = c("Mean", "Bob"), x = c(0, 1), y = 0.35, 
+                          panel.text(lab = c("Mean", "Bob"), x = c(0, 1), y = 0.2, 
                 adj = c(0.4, 0), cex = 1.5, srt = 45)
                   })
 
@@ -289,7 +289,7 @@ plot_e6c <- xyplot(e6f ~ e6e,
                    panel = function(x, ...){
                            panel.xyplot(x, ...)
                            panel.abline(v = 0, lty = 2)
-                           panel.text(lab = "Mean and Bob", x = 0, y = 0.2, adj = c(0.3, -0.2), cex = 1.3, srt = 45)
+                           panel.text(lab = "Mean and Bob", x = 0, y = 0.15, adj = c(0.2, -0.2), cex = 1.2, srt = 45)
                    })
 
 plot_e6d <- xyplot(e6f ~ e6e, 
@@ -337,3 +337,36 @@ plot_e7b <- xyplot(e7d ~ e7c,
 print(plot_e7a, split = c(1, 1, 1, 2), more = TRUE)
 print(plot_e7b, split = c(1, 2, 1, 2), more = FALSE)
 ```
+
+### Exercise 8 - 6/4/'16
+
+Suppose your score on the exam is directly at the mean. What is your standard score.
+
+```{r 8.1 dataload}
+e8a <- seq(-3, 3, length = 1000)
+e8b <- dnorm(e8a, 0, 1)
+```
+
+```{r 8.2 plot standard normal}
+xyplot(e8b ~ e8a,
+       type = "l",
+       main = "Standard normal distribution",
+       panel = function(x, ...){
+               panel.xyplot(x, ...)
+               panel.abline(v = 0, lty = 2)
+               panel.text(lab = "Mean", x = 0, y = 0.2, adj = c(0.4, 0.2), cex = 1.2, srt = 45)
+       })
+
+```
+
+**Solution:**
+
+The mean of a standard normal distribution is always zero. And since the z-score is $(x-\mu)/\sigma$, it would result in 0.
+
+### Exercise 9 - 6/4/'16
+
+SUppose the weight of cereal boxes have a normal distribution with mean of 20 ounces and a standard deviation of half an ounce. A box that has a standard score of zero weighs how much?
+
+**Solution:**
+
+The standard score is $z = (x-\mu)/\sigma$. In this case, a cereal box with standard score of zero weighs $x = (z/\sigma)-/mu$, that is 20 ounces.
