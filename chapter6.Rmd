@@ -11,7 +11,7 @@ knitr::opts_chunk$set(cache=TRUE, warning=FALSE, message=FALSE, fig.width=12)
 ```
 
 ```{r, loadlattice}
-library(lattice)
+library(Easier)
 library(knitr)
 ```
 
@@ -369,4 +369,58 @@ SUppose the weight of cereal boxes have a normal distribution with mean of 20 ou
 
 **Solution:**
 
-The standard score is $z = (x-\mu)/\sigma$. In this case, a cereal box with standard score of zero weighs $x = (z/\sigma)-/mu$, that is 20 ounces.
+The standard score is $z = (x-\mu)/\sigma$. In this case, a cereal box with standard score of zero weighs $x = (z/\sigma)-\mu$, that is 20 ounces.
+
+### Exercise 10 - 6/4/'16
+
+Suppose you want to put fat Fido on a weight-loss program. Before the program, his weight had a standard score of +2 compared to the dogs of its breed/age, and after the program, his weight has a standard score of -2. His weight before the program was 150 pounds, and the standard deviation for the breed is 5.
+
+```{r 10.1 data load}
+e10a <- seq(-4, 4, length = 1000)
+e10b <- dnorm(e10a, 0, 1)
+
+xyplot(e10b ~ e10a, type = "l",
+       main = "Fido",
+       panel = function(x, ...){
+               panel.xyplot(x, ...)
+               panel.abline(v = c(2, -2), lty = 3)
+               panel.text(lab = c("Before", "After"), x = c(2, -2), y = 0.2, adj = c(0.2, 0), cex = 1.3, srt = 45)
+       })
+```
+
+**A. What is the mean weight for Fido's breed/age?**
+
+Since $z = (x - \mu)/\sigma$, the breed mean $\mu$ is $-z\sigma + x$, that is `r -2*5 + 150`. 
+
+**B. What is its weight after the weight-loss program?**
+
+After the program the weight $x_2$ is $ \mu - 2\sigma$, that is `r 140 - 2*5`.
+
+### Exercise 11 - 12/4/'16 - First EasieR duty!
+
+Bob's commuting times to work hava normal distribution with a mean of 45 minutes and a standard deviation of 10 minutes. 
+
+**A. What percentage of time does bob get to work in 30 minutes or less?**
+
+```{r 11.1}
+z_plot(30, 45, 10, p = 1)
+```
+
+Since $z$ is $(X - \mu)/\sigma$ is -1.5, the probability for Bob to get to work in 30 minutes or less is `r pnorm(30, 45, 10)`, that is 6.7%.
+
+**B. Bob's workday starts at 9am, if he leaves at 8am, how often he is late?**
+
+```{r 11.2}
+z_plot(60, 45, 10, 2)
+```
+
+The `r 1-pnorm(60, 45, 10)`%, approximately the 7%.
+
+### Exercise 12 - 12/4/'16 - Easier on duty!
+
+Times to complete a statistics exam have a normal distribution with mean 40 minuteas and standard deviation of 6 minutes. Deshawn's time comes in the 90th percentile. What percentage of the students are still working on their exams when Deshawn leaves?
+
+```{}
+
+```
+
