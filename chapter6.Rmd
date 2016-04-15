@@ -11,7 +11,7 @@ knitr::opts_chunk$set(cache=TRUE, warning=FALSE, message=FALSE, fig.width=12)
 ```
 
 ```{r, loadlattice}
-library(Easier)
+library(EasieR)
 library(knitr)
 ```
 
@@ -420,7 +420,62 @@ The `r 1-pnorm(60, 45, 10)`%, approximately the 7%.
 
 Times to complete a statistics exam have a normal distribution with mean 40 minuteas and standard deviation of 6 minutes. Deshawn's time comes in the 90th percentile. What percentage of the students are still working on their exams when Deshawn leaves?
 
-```{}
+**Solution:** 10%. 
+
+
+### Exercise 13 - 15/4/'16 - Easier on duty!
+
+Suppose your exam score has a standard score of 0.9. Does this mean that 90% of the other exam scoes are lower than yours?
+
+**Solution:** No. It means that my score is 0.9 standard daviation above the mean. Because of the empirical rule, I can say that I am approximately part of 65% of the scores of this exam, since the 68% of scores usually are between one standard deviation from the mean. Futhermore, a z-score of 0.9 corresponds to the 81.59th percentile.
+
+### Exercise 14 - 15/4/'16 - Easier on duty!
+
+If a beby's weight is ad the median, what is her percentile?
+
+**Solution:** It is the 50th percentile.
+
+### Exercise 15 - 15/4/'16 - EasieR on duty!
+
+Clint sleeps an average of 8 hours per night with a standard deviation of 15 minutes. What is the chance he will sleep less than 7.5 hours tonight?
+
+```{r 15.1}
+z_plot(7.5, 8, 0.25, 1)
 
 ```
 
+**Solution:** 
+
+The probability for Clint to sleep less than 7.5 hours is 2.3%.
+
+### Exercise 16 - 15/4/'16 - EasieR on duty!
+
+Suppose you know that Bob's test score is above the mea, but he does not remember how much. At least, how many students must score lower than Bob?
+
+**Solution:**
+
+At least the 50%.
+
+### Exercise 17 - 15/4/'16 - EasieR on duty!
+
+Bob's commuting times to work have a normal distribution with a mean of 45 minutes and a standard deviation of 10 minutes. How often does Bob get to work in 30 to 45 minutes?
+
+```{r 17.1}
+z_plot(30, 45, 10, 3, 45)
+```
+
+**Solution:**
+
+Bob gets to work in 30 to 45 minutes the ~43% of the times.
+
+### Exercise 18 - 15/4/'16 - EasieR on duty!
+
+The times taken to complete a statistics exam has a normal distribution with a mean of 40 minutes and a standard deviation of 6 minutes. What is the chance of Deshawn completing the exam in 30 to 35 minutes?
+
+```{r 18.1}
+z_plot(30, 40, 6, p = 3, y = 35)
+```
+
+**Solution:** 
+
+The probability for Deshawn of completing the exam in 30 to 35 minutes is 15.4%.
