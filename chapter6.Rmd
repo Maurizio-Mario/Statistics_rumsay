@@ -1,8 +1,7 @@
 ---
-title: 'Rumsay, Chapter 6: Measures of relative standing and the normal distribution.
-  [Ongoing]'
+title: 'Rumsay, Chapter 6: Measures of relative standing and the normal distribution.'
 author: "Maurizio Murino"
-date: "12 March 2016"
+date: "12 March 2016 - 16 April 2016"
 output: html_document
 ---
 
@@ -550,6 +549,54 @@ Jimmy walks a mile, and his previous times have a normal distribution with a mea
 
 Since we are talking about times, the lower the better. Jimmy's z-score has to be in the  for the 10th (0.1) percentile: -1.28. The cutting point $x$ is $z\sigma + \mu$, that is 6.72 minutes.
 
-```{r 23.1}
+```{r 24.1}
 zPlot(6.72, 8, 1, 1)
 ```
+
+
+### Exercise 25 - 16/4/'16 - EasieR on duty!
+
+The times it takes to complete a statistics exam have a normal distribution with a mean of 40 minutes and standard deviation of 6 minutes. Deshawn's time falls at the 42nd percentile. How long does Deshawn take to finish the exam?
+
+**Solution:**
+
+The z-score for the 42nd percentile (0.42) is -0.2. Hence, because of the $z$ for $x$ formula $x = z\sigma + \mu$, the time $x$ for Deshawn in finishing the exam is 38.8 minutes. Let's test the result with the `zPlot` function. 
+
+```{r 25.1}
+zPlot(38.8, 40, 6)
+```
+
+
+### Exercise 26 - 16/4/'16 - EasieR on duty!
+
+Exam scores for a particular test have a normal distribution with a mean of 75 and standard deviation of 5. The instructor wants to give the top 20% of the scores an A. What is the cutoff for an A?
+
+**Solution:**
+
+Since we are looking for the top 20% of the distribution, we are looking for the 80th percentile. The z-score for the 8Oth percentile (0.8) is 0.84. Hence, the $x$ representing the cut point is, according to the formula $x = z\sigma + \mu$, 79.2.
+
+```{r 26.1}
+zPlot(79.2, 75, 5)
+```
+
+
+### Exercise 27 - 16/4/'16 - EasieR on duty!
+
+Service call times for one company have a normal distribution with a mean of 10 minutes and a standard deviation of 3 minutes. Researchers study the longest 10% of the call to make improvements. How long do the longest 10 percent last?
+
+**Solution:**
+
+In this case, we are referring to higher part of the distribution, that is, the 90th percentile (0.9). The z-score for the 90th percentile is 1.28 and the $x$, according to the formula $x = z\sigma + \mu$, is 13.84 minutes.
+
+```{r 27.1}
+zPlot(13.84, 10, 3)
+```
+
+
+### Exercise 28 - 16/4/'16 - EasieR on duty!
+
+Statcars have a miles per gallon normal distribution with a mean of 75. Twenty-percent of the vehicles get more than 100 miles per gallon. What is the standard deviation?
+
+**Solution:**
+
+Since we are interested in the top 20% of the distribution, we shall consider the 80th percentile. The z-score for the 80th percentile (0.8) is 0.84. The standard deviation $\sigma$, hence, is $(x - \mu)/z = 29.76$ 
