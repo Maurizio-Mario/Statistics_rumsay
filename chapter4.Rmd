@@ -1,0 +1,40 @@
+---
+title: 'Rumsay, Chapter 4: Summarizing quantitative data: means medians and more'
+author: "Maurizio Murino"
+date: "22 April 2016"
+output: html_document
+---
+
+
+```{r setoption, cache=TRUE, warning=FALSE, message=FALSE, fig.width=12}
+knitr::opts_chunk$set(cache=TRUE, warning=FALSE, message=FALSE, fig.width=4, echo = FALSE)
+```
+
+```{r, loadlibraries}
+library(knitr)
+library(lattice)
+```
+
+### Exercise 1 - 22/4/'16
+
+Is the data set shown in the following figure symmetric or skewed? How many modes does this data set have?
+***
+
+```{r 1.1}
+e1 <- rep(seq(1, 6, 1), c(6, 4, 2, 2, 4, 6))
+barchart(table(e1), horizontal = FALSE, xlab = "", ylab = "Frequency")
+```
+
+**Solution:**
+The data set is symmetric. Furthermore, it has two modes.
+
+### Exercise 2 - 22/4/'16
+
+Describe the shape of the dataset shown in the following figure.
+```{r 2.1}
+e2 <- rep(seq(1, 9, 1), c(6, 5, 4, 3, 2, 1, 1, 1, 1))
+barchart(table(e2), ylab = "Frequency", horizontal = FALSE)
+```
+**Solution:**
+The dataset is right skewed, also said right skewed, with one mode.
+
