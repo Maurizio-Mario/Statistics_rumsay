@@ -18,7 +18,6 @@ library(lattice)
 ### Exercise 1 - 22/4/'16
 
 Is the data set shown in the following figure symmetric or skewed? How many modes does this data set have?
-***
 
 ```{r 1.1}
 e1 <- rep(seq(1, 6, 1), c(6, 4, 2, 2, 4, 6))
