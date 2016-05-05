@@ -70,3 +70,122 @@ Does the median have to be one of the numbers on the data set? Explain.
 
 **Solution:**
 No, it does not. The median is the value representing the $50^th$ percentile of a distribution, that is, the point with 50% of the ordered observation on the left and 50% on the right. Consider a distribution including 8, 6, 7, 5, 4. In this case, the median is 6, having two ordered observation for each side, 4, 5, 6, 7, 8. Instead, in a $n = 4$ distribution 8, 6, 4, 5 the median is 5.5, since it lies between 4, 5, *5.5*, 6, 7.
+
+### Exercise 7 - 25/4/'16
+
+Why do you have to order the data to calculate the median but not for the mean?
+
+**Solution:**
+If you do not order the data, you will get a different answer. 1, 7, 3 have median 3, but if you do not order them, the result is 3. On the other hand, beacuse the commutative property of addictions, the mean, that sum each value, does not require a particular order to produce the correct result.
+
+### Exercise 8 - 25/4/'16
+
+Suppose you have an *outliers* in a dataset (a number that stands outaway from the rest). How does an outlier affect the mean and the median of that set?
+
+**Solution:**
+The median is not affected by outliers, for 1, 2, 3 and 1, 2, 99 have the same median 2. The mean can be heavility affected, since outliers could move away the mean from the more relevant/representative part of the distribution. I.e. 1, 2, 3 produced mean = 2, that it a center that correctly represent the three elements of the distribution. 1, 2, 99 produces 34, that is quite far from the most dense part of the distribution. 
+
+### Exercise 9 - 26/4/'16
+
+Suppose you find the mean for a certain dataset. 
+
+**a.**
+Depending on what the data actually are, the mean should always lie between the largest and smallest values of the data set. Exaplain why.
+
+**b.** When can the mean be the largest value in the data set?
+
+**Solution:**
+
+**a.** The mean results always from a division $\mu = \sum{x-x^_}/n$. Even if the distribution has only one observation, a number diveded by itself cannot be bigger than itself.
+
+**b.** Only when the distribution has only one observation OR equal observations.
+
+### Exercise 10 - 26/4/'16
+
+Give an example of two different data sets containing three numbers each that both have the same median and mean. Explain why the median is not the enough to tell the whole story about a data set.
+
+**Solution:**
+Dataset *a:* 3, 4, 5. Median = 4, mean = 4.
+Dataset *b:* 1, 4, 7. Median = 4, mean = 4.
+
+The median does not consider the weight of the diffrent part of the distribution. 1, 2, 3, 98, 99 has always median 3, regardless of the bistribution being strongly left skewed!
+
+### Exercise 11 - 26/4/'16
+
+Suppose the mean and median salary at a company is $50000, and all employees get a $1000 raise.
+**a.** What happens to the mean?
+**b.** What happens to the median?
+
+**Solutions:**
+*a:* The mean rises by one thousant.
+*b:* The median too!
+
+### Exercise 12 - 26/4/'16
+
+Suppose the mean and median salary at a company is $50000, and all employees get a 10% raise.
+**a.** What happens to the mean?
+**b.** What happens to the median?
+
+**Solutions:**
+*a:* The mean rises by 10%. Since a constant is added to every element of the disribution, the mean changes accordingly.
+*b:* The median too!
+
+### Exercise 13 - 4/5/'16
+
+What is the smallest standard deviation you can figure, and when would that happen?
+
+**Solution:**
+The data deviation cannot be negative, since it is the square root of the variance. It can be zero, if all the observations are equals.
+
+### Exercise 14 - 4/5/'16
+
+Choose four numbers from one to five, with repetitions allowed, to create the largest standard deviation possible.
+
+**Solution:**
+The standard deviation is larger according to how far is every observation from the mean. In our case, the minimum standard deviation 0, for mean 2, would consider observation with values of 2, 2, 2, 2. Always for mean 2, hence, the largest standard deviation would have to consider points that keep the mean as far as possible from them. In our case, 1, 1, 4, 4, that gives us a standard deviation of 2. 
+
+### Exercise 15 - 4/5/'16
+
+Suppose the mean salary ar a company is 50000$, and all employees get a 1000 dollars raise. What happens to the standard deviation?
+
+**Solution:**
+The standard deviation would not change, since this generalized rise would move the mean up of exactly 1000 dollars. Because of that, the distance of every observation from the mean remains unchanged. 
+
+### Exercise 16 - 4/5/'16
+
+Suppose the mean salary ar a company is 50000$, and all employees get a 10% dollars raise. What happens to the standard deviation?
+
+**Solution:**
+The standard deviation would  change, since this generalized rise of 10% would have a greater effect on larger values rather than on smaller values. Because of that, the distance of every observation from the mean would be different in respect of the distances from the observations before the raise.
+
+### Exercise 17 - 4/5/'16
+
+Suppose the average salary at a certain company is $100000, and the median salary is 40000. 
+**a:** What do these figures tell you about the shape of the histogram of salaries at the company?
+**b:** Which message of center is more appropriate here?
+**c:** Suppose the company goes through a salary negotiation. How can people on each side use the above summary statistics to their advantage? 
+
+**Solutions:**
+**a:** The histogram asymmetric and right skewed.
+**b:** The median. Such a different mean suggests that a relatively small amount of individuals have a salary really high compared to the other within the company.
+**c:** Workers can say that many people have lower salaries compared to the mean. On the other side, they will say that the mean salary on the company is really high. 
+
+### Exercise 18 - 5/5/'16
+
+Suppose you know that a data set is skewed left, and you know that the two measures of center are 19 and 38. Which figure is the mean and with is the median? 
+**Solution:**
+Since the median represents the center of the distribution, a skewed left one will have a mean smallare the the median. Hence, 19 is the mean, 38 the median.
+
+### Exercise 19 - 5/5/'16
+
+Can the mean of a data set be higher than the most of the values in the set? If so, how? Can the median of a set be higher than most of the values? If so, how?
+
+**Solution:**
+Yes it can. It just need a couple of values to be significantly higher than the most of them. For example, the distribution 1, 1, 1, 20 has mean 5.75.
+
+### Exercise 20 - 5/5/'16
+
+Is the standard deviation affected by skewed data? If so, how?
+
+**Solution:**
+Is possible. It measures the average dinstance from the mean, hence, since the skewed data change this distance, the standard deviation will change accordingly.
