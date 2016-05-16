@@ -189,3 +189,42 @@ Is the standard deviation affected by skewed data? If so, how?
 
 **Solution:**
 Is possible. It measures the average dinstance from the mean, hence, since the skewed data change this distance, the standard deviation will change accordingly.
+
+### Exercise 21 - 10/5/'16
+
+Does the empirical rule apply to the data set shown in the following figure? Explain.
+
+```{r 21.1}
+e21 <- rep(seq(1, 9, 1), c(1, 1, 1, 1, 2, 3, 4, 5, 6))
+barchart(table(e21), ylab = "Frequency", horizontal = FALSE)
+```
+
+**Solution:**
+It does not. The data are right skewd, and this means that the data do not equally spread with a mound shaped distribution.
+
+### Exercise 22 - 10/5/'16
+
+Suppose a driver's test has a mean score of 7 (out of 10 points) and standard deviation of .5.
+
+**a:** Exaplain why you can reasonably assume that the data set of the test scores is mound shaped.
+**b:** For the drivers taking this particular test, where should 68 percent of them score?
+**c:** Where should 95 percent of them score?
+**d:** Where should 99.7 percent of them score?
+
+**Solution:**
+**a:** If we suppose the sample is big enough, the shape of a distribution can be approximated to a normal one.
+**b:** Between 6.5 and 7.5.
+**c:** Between 6 and 8.
+**d:** Between 5.5 and 8.5.
+
+### Exercise 23 - 10/5/'16
+
+Suppose you have a data set of 1, 2, 2, 3, 3, 3, 4, 4, 5, and you assume this sample represents a population.
+
+**a:** Explain why you can apply the Empirical Rule to this data set.
+**b:** Where would "most of the values" in the population fall, based on this data set?
+
+**Solution:**
+**a:** It is symmetrically distributed around a central frequency.
+**b:** The mean is 3, the standard deviation is 1.225. Most of the values are, hence, between 0.55 and 5.45.
+
