@@ -1,0 +1,33 @@
+---
+title: 'Rumsay, Chapter 7: Demystifying sampling distributions ans the central limit
+  theorem.'
+author: "Maurizio Murino"
+date: "22 June 2016"
+output: html_document
+---
+
+```{r setoption, cache=TRUE, warning=FALSE, message=FALSE, fig.width=12}
+knitr::opts_chunk$set(cache=TRUE, warning=FALSE, message=FALSE, fig.width=12)
+```
+
+```{r, loadlattice}
+library(EasieR)
+library(knitr)
+library(lattice)
+library(sn)
+```
+
+### Exercise 1 - 22/6/'16
+
+Suppose you take a sample of 100 from a skewed population with mean 50 an standard deviation 15.
+
+**a:** What sample size condition do you need to check here?
+**b:** What's the shape and center of the sampling distribution for $\=X$?
+**c:** What's the standard error?
+
+
+**Solution:** 
+
+**a:** The sample should be at least 30. The condition is met.
+**b:** Because of the Central Limit Theorem that states that every sample has approximately a normal distribution, we can say that the sample distribution is bell shaped. The center is 50, since the mean of a sample distribution tends to be like the population mean.
+**c:** The standard error of the sample distribution is $\sigma/\sqrt{n}$, that is 1.5.
