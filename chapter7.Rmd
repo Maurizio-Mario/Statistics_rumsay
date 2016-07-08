@@ -31,3 +31,77 @@ Suppose you take a sample of 100 from a skewed population with mean 50 an standa
 **a:** The sample should be at least 30. The condition is met.
 **b:** Because of the Central Limit Theorem that states that every sample has approximately a normal distribution, we can say that the sample distribution is bell shaped. The center is 50, since the mean of a sample distribution tends to be like the population mean.
 **c:** The standard error of the sample distribution is $\sigma/\sqrt{n}$, that is 1.5.
+
+### Exercise 2 - 23/6/'16
+
+Suppose you take a sample of 100 from a population that contains 45 percents Democrats.
+
+**a:** What sample size condition do you need to check here (if any)?
+**b:** What's the standard error of $\^p$?
+**c:** Compare the standard errors of $\^p$ for n = 100, n = 1000, n = 10000 and comment.
+
+**Solution:**
+
+**a:** We should check if $n*p$ is larger than 10. In our case, $100 * 0.45 = 45$, hence we can say that the Central Limit Theorem can be applied.
+**b:** The standard error for sample proportions is $\sqrt{\frac{p(1-p)}{n}}$, that is, $\sqrt{\frac{.45(1 - .45)}{100}} = 0.05244$.
+**c:** The standard error diminutes as the sample size increases. For n = 1000 the standard error is 0.01658, and for n = 10000 is 0.01658. It represents superior precision due to the bigger sample.
+
+### Exercise 4 - 8/7/'16
+
+Suppose a coin is fair (so $p = 1/2$ for heads or tails). 
+
+**a:** Guess how many times you have to flip the coin to get the standard error down to only 1 percent (don't do any calculations).
+**b:** Now use the standard error formula to figure it out.
+
+**Solution:**
+
+**a & b:**
+```{r 4.1}
+
+# Sample size 1.
+
+set.seed(123)
+x <- sample(c(1, 0), 10, replace = TRUE)
+mean(x)
+std_er <- sd(x)/sqrt(length(x)) 
+paste0(round((std_er*100)), "%")
+
+# Increase the sample size to 100.
+
+set.seed(123)
+x <- sample(c(1, 0), 100, replace = TRUE)
+mean(x)
+std_er <- sd(x)/sqrt(length(x)) 
+paste0(round((std_er*100)), "%")
+
+# Increase the sample size to 1000.
+
+set.seed(123)
+x <- sample(c(1, 0), 1000, replace = TRUE)
+mean(x)
+std_er <- sd(x)/sqrt(length(x)) 
+paste0(round((std_er*100)), "%")
+
+# Increase size up sto standard error = 1%.
+
+set.seed(123)
+z <- sample(c(1, 0), 10, replace = TRUE)
+
+my_f <- function(x){
+        y <- sample(c(1, 0), length(x), replace = TRUE)
+        se <- sd(y)/sqrt(length(y))
+        
+        while(se > 0.01){
+                y <- c(y, sample(c(1, 0), 1))
+                se <- sd(y)/sqrt(length(y))
+                
+                if(se <= 0.01) break
+        }
+        print(length(y))
+}
+
+t <- my_f(z)
+```
+
+As we can see, the standard error decreases as long as the sample size increases.
+In the previous simulation, the adequate sample size is 2501.
