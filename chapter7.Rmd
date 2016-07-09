@@ -21,37 +21,37 @@ library(sn)
 
 Suppose you take a sample of 100 from a skewed population with mean 50 an standard deviation 15.
 
-**a:** What sample size condition do you need to check here?
-**b:** What's the shape and center of the sampling distribution for $\=X$?
-**c:** What's the standard error?
+**a.** What sample size condition do you need to check here?
+**b.** What's the shape and center of the sampling distribution for $\=X$?
+**c.** What's the standard error?
 
 
 **Solution:** 
 
-**a:** The sample should be at least 30. The condition is met.
-**b:** Because of the Central Limit Theorem that states that every sample has approximately a normal distribution, we can say that the sample distribution is bell shaped. The center is 50, since the mean of a sample distribution tends to be like the population mean.
-**c:** The standard error of the sample distribution is $\sigma/\sqrt{n}$, that is 1.5.
+**a.** The sample should be at least 30. The condition is met.
+**b.** Because of the Central Limit Theorem that states that every sample has approximately a normal distribution, we can say that the sample distribution is bell shaped. The center is 50, since the mean of a sample distribution tends to be like the population mean.
+**c.** The standard error of the sample distribution is $\sigma/\sqrt{n}$, that is 1.5.
 
 ### Exercise 2 - 23/6/'16
 
 Suppose you take a sample of 100 from a population that contains 45 percents Democrats.
 
-**a:** What sample size condition do you need to check here (if any)?
-**b:** What's the standard error of $\^p$?
-**c:** Compare the standard errors of $\^p$ for n = 100, n = 1000, n = 10000 and comment.
+**a.** What sample size condition do you need to check here (if any)?
+**b.** What's the standard error of $\^p$?
+**c.** Compare the standard errors of $\^p$ for n = 100, n = 1000, n = 10000 and comment.
 
 **Solution:**
 
-**a:** We should check if $n*p$ is larger than 10. In our case, $100 * 0.45 = 45$, hence we can say that the Central Limit Theorem can be applied.
-**b:** The standard error for sample proportions is $\sqrt{\frac{p(1-p)}{n}}$, that is, $\sqrt{\frac{.45(1 - .45)}{100}} = 0.05244$.
-**c:** The standard error diminutes as the sample size increases. For n = 1000 the standard error is 0.01658, and for n = 10000 is 0.01658. It represents superior precision due to the bigger sample.
+**a.** We should check if $n*p$ is larger than 10. In our case, $100 * 0.45 = 45$, hence we can say that the Central Limit Theorem can be applied.
+**b.** The standard error for sample proportions is $\sqrt{\frac{p(1-p)}{n}}$, that is, $\sqrt{\frac{.45(1 - .45)}{100}} = 0.05244$.
+**c.** The standard error diminutes as the sample size increases. For n = 1000 the standard error is 0.01658, and for n = 10000 is 0.01658. It represents superior precision due to the bigger sample.
 
 ### Exercise 4 - 8/7/'16
 
 Suppose a coin is fair (so $p = 1/2$ for heads or tails). 
 
-**a:** Guess how many times you have to flip the coin to get the standard error down to only 1 percent (don't do any calculations).
-**b:** Now use the standard error formula to figure it out.
+**a.** Guess how many times you have to flip the coin to get the standard error down to only 1 percent (don't do any calculations).
+**b.** Now use the standard error formula to figure it out.
 
 **Solution:**
 
@@ -105,3 +105,30 @@ t <- my_f(z)
 
 As we can see, the standard error decreases as long as the sample size increases.
 In the previous simulation, the adequate sample size is 2501.
+
+### Exercise 5 - 8/7/'16
+
+Suppose you have a normal population of quiz scores with mean 40 and standard deviation 10.
+
+**a.** Select a random sample of 40. What's the chance that the mean of the quiz scores won't exceed 45?
+
+**b.** Select one individual from the population. What's the chance that his/her quiz score won't exceed 45?
+
+**Solution:**
+
+**a.** First let's transform the mean in z-value.
+
+```{r 5.1}
+z <- (45 - 40)/(10/(sqrt(40)))
+z
+```
+Then, we can check on the z-table and verify that the $$P(\bar{X} < 45) = P(z < (45-40)/(10/\sqrt{40})) = 0.9992$$.
+
+**b.** As for solution "a" we calculate the z-value.
+
+```{r 5.2}
+z <- (45 - 40)/10
+z
+```
+In this case, the probability is for the person to get a better score than 45 is 0.6915 for a z-score of 0.5.
+

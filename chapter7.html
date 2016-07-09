@@ -131,21 +131,21 @@ library(sn)</code></pre>
 <div id="exercise-1---22616" class="section level3">
 <h3>Exercise 1 - 22/6/’16</h3>
 <p>Suppose you take a sample of 100 from a skewed population with mean 50 an standard deviation 15.</p>
-<p><strong>a:</strong> What sample size condition do you need to check here? <strong>b:</strong> What’s the shape and center of the sampling distribution for <span class="math">\(\=X\)</span>? <strong>c:</strong> What’s the standard error?</p>
+<p><strong>a.</strong> What sample size condition do you need to check here? <strong>b.</strong> What’s the shape and center of the sampling distribution for <span class="math">\(\=X\)</span>? <strong>c.</strong> What’s the standard error?</p>
 <p><strong>Solution:</strong></p>
-<p><strong>a:</strong> The sample should be at least 30. The condition is met. <strong>b:</strong> Because of the Central Limit Theorem that states that every sample has approximately a normal distribution, we can say that the sample distribution is bell shaped. The center is 50, since the mean of a sample distribution tends to be like the population mean. <strong>c:</strong> The standard error of the sample distribution is <span class="math">\(\sigma/\sqrt{n}\)</span>, that is 1.5.</p>
+<p><strong>a.</strong> The sample should be at least 30. The condition is met. <strong>b.</strong> Because of the Central Limit Theorem that states that every sample has approximately a normal distribution, we can say that the sample distribution is bell shaped. The center is 50, since the mean of a sample distribution tends to be like the population mean. <strong>c.</strong> The standard error of the sample distribution is <span class="math">\(\sigma/\sqrt{n}\)</span>, that is 1.5.</p>
 </div>
 <div id="exercise-2---23616" class="section level3">
 <h3>Exercise 2 - 23/6/’16</h3>
 <p>Suppose you take a sample of 100 from a population that contains 45 percents Democrats.</p>
-<p><strong>a:</strong> What sample size condition do you need to check here (if any)? <strong>b:</strong> What’s the standard error of <span class="math">\(\^p\)</span>? <strong>c:</strong> Compare the standard errors of <span class="math">\(\^p\)</span> for n = 100, n = 1000, n = 10000 and comment.</p>
+<p><strong>a.</strong> What sample size condition do you need to check here (if any)? <strong>b.</strong> What’s the standard error of <span class="math">\(\^p\)</span>? <strong>c.</strong> Compare the standard errors of <span class="math">\(\^p\)</span> for n = 100, n = 1000, n = 10000 and comment.</p>
 <p><strong>Solution:</strong></p>
-<p><strong>a:</strong> We should check if <span class="math">\(n*p\)</span> is larger than 10. In our case, <span class="math">\(100 * 0.45 = 45\)</span>, hence we can say that the Central Limit Theorem can be applied. <strong>b:</strong> The standard error for sample proportions is <span class="math">\(\sqrt{\frac{p(1-p)}{n}}\)</span>, that is, <span class="math">\(\sqrt{\frac{.45(1 - .45)}{100}} = 0.05244\)</span>. <strong>c:</strong> The standard error diminutes as the sample size increases. For n = 1000 the standard error is 0.01658, and for n = 10000 is 0.01658. It represents superior precision due to the bigger sample.</p>
+<p><strong>a.</strong> We should check if <span class="math">\(n*p\)</span> is larger than 10. In our case, <span class="math">\(100 * 0.45 = 45\)</span>, hence we can say that the Central Limit Theorem can be applied. <strong>b.</strong> The standard error for sample proportions is <span class="math">\(\sqrt{\frac{p(1-p)}{n}}\)</span>, that is, <span class="math">\(\sqrt{\frac{.45(1 - .45)}{100}} = 0.05244\)</span>. <strong>c.</strong> The standard error diminutes as the sample size increases. For n = 1000 the standard error is 0.01658, and for n = 10000 is 0.01658. It represents superior precision due to the bigger sample.</p>
 </div>
 <div id="exercise-4---8716" class="section level3">
 <h3>Exercise 4 - 8/7/’16</h3>
 <p>Suppose a coin is fair (so <span class="math">\(p = 1/2\)</span> for heads or tails).</p>
-<p><strong>a:</strong> Guess how many times you have to flip the coin to get the standard error down to only 1 percent (don’t do any calculations). <strong>b:</strong> Now use the standard error formula to figure it out.</p>
+<p><strong>a.</strong> Guess how many times you have to flip the coin to get the standard error down to only 1 percent (don’t do any calculations). <strong>b.</strong> Now use the standard error formula to figure it out.</p>
 <p><strong>Solution:</strong></p>
 <p><strong>a &amp; b:</strong></p>
 <pre class="r"><code># Sample size 1.
@@ -195,7 +195,24 @@ my_f &lt;- function(x){
 
 t &lt;- my_f(z)</code></pre>
 <pre><code>## [1] 2501</code></pre>
-<p>As we can see, the standard error decreases as long as the sample size increases. In the previous simulation, the adequate sample size is <code>print(t)</code>.</p>
+<p>As we can see, the standard error decreases as long as the sample size increases. In the previous simulation, the adequate sample size is 2501.</p>
+</div>
+<div id="exercise-5---8716" class="section level3">
+<h3>Exercise 5 - 8/7/’16</h3>
+<p>Suppose you have a normal population of quiz scores with mean 40 and standard deviation 10.</p>
+<p><strong>a.</strong> Select a random sample of 40. What’s the chance that the mean of the quiz scores won’t exceed 45?</p>
+<p><strong>b.</strong> Select one individual from the population. What’s the chance that his/her quiz score won’t exceed 45?</p>
+<p><strong>Solution:</strong></p>
+<p><strong>a.</strong> First let’s transform the mean in z-value.</p>
+<pre class="r"><code>z &lt;- (45 - 40)/(10/(sqrt(40)))
+z</code></pre>
+<pre><code>## [1] 3.162278</code></pre>
+<p>Then, we can check on the z-table and verify that the p is 0.9992.</p>
+<p><strong>b.</strong> As for solution “a” we calculate the z-value.</p>
+<pre class="r"><code>z &lt;- (45 - 40)/10
+z</code></pre>
+<pre><code>## [1] 0.5</code></pre>
+<p>In this case, the probability is for the person to get a better score than 45 is <span class="math">\[P(\bar{X} &lt; 45) = P(z &lt; (45-40)/(10/\sqrt{40})) = 0.6915\]</span></p>
 </div>
 
 
